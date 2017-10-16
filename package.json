@@ -1,0 +1,22 @@
+{
+  "name": "toh-adwrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && webpack --watch",
+    "dev": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-webpack": "^1.5.0",
+    "rimraf": "^2.5.4",
+    "webpack": "^2.2.0-rc.2",
+    "webpack-dev-server": "2.2.0-rc.0"
+  }
+}

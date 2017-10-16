@@ -1,0 +1,1211 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+
+<meta name="description" content="" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="SHORTCUT ICON" href="/cdn/images/favicon.ico" />
+
+<title>Front Page - Listingbook</title>
+
+    <script src="/CDN/bundles/jQuery?v=9gAMRm4rrp-laVyBlI6iVRalLBq3SLlyPF81o64Sk_A1"></script>
+
+
+    <script src="/CDN/bundles/commonTop?v=xsfENCwS_3kHOvcwYmWdRiKjf0H_9h3euAVB26y9Jsc1"></script>
+<script src="/CDN/bundles/frontPageTop?v=8GUvsEvp5mHiD3H4hQMQwGBxSu5rdozOUmneednIb3s1"></script>
+
+
+    <link href="/CDN/Content/common?v=HY7rjGrWunc3ovp8eR9swi0KrbaXjrrYQFI8rS9l7d01" rel="stylesheet"/>
+
+
+    <link href="/CDN/Content/frontPage?v=EQDh83rZK-RlnFjCequjdwH4E_JzhoWMITkyGZ7PzPk1" rel="stylesheet"/>
+
+<link rel="stylesheet" type="text/css" media="print" href="/cdn/Content/print.css" />
+
+
+  <script src="/CFIDE/scripts/wddx.js" type="text/javascript"></script>
+
+  <script type="text/javascript" language="javascript">
+    $.fn.replaceHtml = function( html ) {
+        var stack = [];
+        return this.each( function(i, el) {
+            var oldEl = el;
+            var newEl = oldEl.cloneNode(false);
+            newEl.innerHTML = html;
+            oldEl.parentNode.replaceChild(newEl, oldEl);
+            stack.push( newEl );
+        }).pushStack( stack );
+    };
+    $.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
+
+    //iPAD Support
+      $.fn.addTouch = function(){
+        this.each(function(i,el){
+          $(el).bind('touchstart touchmove touchend touchcancel MSPointerDown MSPointerMove MSPointerUp',function(){
+            //we pass the original event object because the jQuery event
+            //object is normalized to w3c specs and does not provide the TouchList
+            handleTouch(event);
+          });
+        });
+
+        var handleTouch = function(event)
+        {
+          var touches = event.changedTouches,
+                  first = touches[0],
+                  type = '';
+
+          switch(event.type)
+          {
+            case 'touchstart':
+            case 'MSPointerDown':
+              type = 'mousedown';
+              break;
+
+            case 'touchmove':
+            case 'MSPointerMove':
+              type = 'mousemove';
+              event.preventDefault();
+              break;
+
+            case 'touchend':
+            case 'MSPointerUp':
+              type = 'mouseup';
+              break;
+
+            default:
+              return;
+          }
+
+          var simulatedEvent = document.createEvent('MouseEvent');
+          simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+          first.target.dispatchEvent(simulatedEvent);
+        };
+      };
+  </script>
+
+<script type="text/javascript">
+  var BASE_INIT_MODAL_PRIORITY = 1;
+  var INTERSTITIAL_INIT_MODAL_PRIORITY = BASE_INIT_MODAL_PRIORITY + 1;
+  var VIDEO_TOUR_INIT_MODAL_PRIORITY = INTERSTITIAL_INIT_MODAL_PRIORITY + 1;
+  var ACTIVATION_INIT_MODAL_PRIORITY = VIDEO_TOUR_INIT_MODAL_PRIORITY + 1;
+  var RESET_PASSWORD_MODAL_PRIORITY = VIDEO_TOUR_INIT_MODAL_PRIORITY + 1;
+  function applicationEnvironment(){
+    var pageFlags = new ObjectCollection();
+    var activeAjaxRequest = new ObjectCollection();
+    this.searchResultViewsArray = new Array();
+    this.searchResultViewsArray.push([['Comparison : Low Resolution','comparisonView_Low','showSearchView_Comparison','1','html'],
+        ['Comparison : Medium Resolution','comparisonView_Medium','showSearchView_Comparison','2','html'],
+        ['Comparison : High Resolution','comparisonView_High','showSearchView_Comparison','3','html'],
+        ['Showing Sheet','showingSheetView','showSearchView_ShowingSheet','4','html'],
+        ['Single Row','oneLineView','showSearchView_OneLine','0','xml'],
+        ['Single Row : Homefinder','oneLineView','showSearchView_OneLine','0','xml'],
+        ['Comparison : Low Resolution : Homefinder','comparisonView_Low','showSearchView_Comparison','1','html'],
+        ['Comparison : Medium Resolution : Homefinder','comparisonView_Medium','showSearchView_Comparison','2','html'],
+        ['Comparison : High Resolution : Homefinder','comparisonView_High','showSearchView_Comparison','3','html']]);
+
+    this.searchResultViewsArray.push([['Comparison : Low Resolution','comparisonView_Low','showSearchView_Comparison','1','html'],
+        ['Comparison : Medium Resolution','comparisonView_Medium','showSearchView_Comparison','2','html'],
+        ['Comparison : High Resolution','comparisonView_High','showSearchView_Comparison','3','html'],
+        ['Single Row','oneLineView','showSearchView_OneLine','0','xml'],
+        ['Single Row : Reject Client','oneLineView','showSearchView_OneLine','0','xml'],
+        ['Single Row : Homefinder','oneLineView','showSearchView_OneLine','0','xml'],
+        ['Comparison : Low Resolution : Homefinder','comparisonView_Low','showSearchView_Comparison','1','html'],
+        ['Comparison : Medium Resolution : Homefinder','comparisonView_Medium','showSearchView_Comparison','2','html'],
+        ['Comparison : High Resolution : Homefinder','comparisonView_High','showSearchView_Comparison','3','html']]);
+
+    var eventManager = new ObjectCollection();
+    eventManager.AddObject("37906CD1-E8A7-4FBA-A9F1-1725A2041CDA","agent.viewClients");
+    //eventManager.AddObject("483C8D22-B463-4A95-9186-3F64D7899E1A","agent.messages");
+    eventManager.AddObject("D5391C54-3910-4725-A72E-ECCC4CD0F0B6","myAccount.calendar");
+    eventManager.AddObject("37D48F5A-4E17-44F5-A700-FAD3ED07B096","agent.clientDashboard");
+    eventManager.AddObject("A3B47602-CF5D-4822-92E7-3F7170657180","search");
+    eventManager.AddObject("2B16A444-E5E0-414E-9783-358708D6DC67","client.consumerDashboard");
+    eventManager.AddObject("94C65F4E-6EDC-455E-A9D7-1045D2259745","orderCheckout");
+    eventManager.AddObject("DA97B459-6229-4EA6-826B-13494FC6A0BB","viewListings");
+    eventManager.AddObject("272F57CF-5DB0-4B85-BE4E-1AAAA69F9F4A","propertyDetails");
+    eventManager.AddObject("FB07B29E-17C1-45CD-BDBB-6C5918870E4C","schedulePromotions");
+    eventManager.AddObject("35A093BE-2680-4B29-BD63-D7F37A566B92","agentFrontPage");
+    eventManager.AddObject("productServices.billingInformation.displayAccountInfo","displayBillingAccountInfo");
+    eventManager.AddObject("/index.cfm/event/productServices.completePurchase/","completePurchase");
+    eventManager.AddObject("productServices.productInCart","productInCart");
+    eventManager.AddObject("myAccount.confirmLeaveMessageTab","confirmLeaveComposeMessageTab");
+    eventManager.AddObject("/index.cfm/event/myAccount.deleteMessage/","myAccount.deleteMessage");
+    eventManager.AddObject("/index.cfm/event/myAccount.restoreMessage/","myAccount.restoreMessage");
+    eventManager.AddObject("/index.cfm/event/noPropertiesSelected/","noPropertiesSelected");
+    eventManager.AddObject("/index.cfm/event/agent.showClientDeleteFolder/","agent.showClientDeleteFolder");
+    eventManager.AddObject("/index.cfm/event/agent.initClientTransferFolder/","agent.initClientTransferFolder");
+    eventManager.AddObject("/index.cfm","confirmPromotion");
+    eventManager.AddObject("/index.cfm","updatePromotion");
+    eventManager.AddObject("/index.cfm","openHouseGrid");
+    eventManager.AddObject("/index.cfm/event/dashboard.getHomeFinderStatistics/","homeFinderStatistics");
+    eventManager.AddObject("F111827E-0700-4693-9F80-19AAD7C83528","welcomeDialog");
+    eventManager.AddObject("showResetPasswordDialog","resetPassword");
+    eventManager.AddObject("/index.cfm/event/agent.videoTour/","videoTour");
+    eventManager.AddObject("/index.cfm/event/client.welcomeInterstitial/","clientWelcomeInterstitial");
+    eventManager.AddObject("/index.cfm/event/agent.showOptInPopups/","optInAgent");
+
+    eventManager.AddObject("Agent","isAgent");
+    eventManager.AddObject("NonAgent","isClient");
+
+    this.ApplicationRoot = "";
+    this.ApplicationPath = "/index.cfm/event/";
+    this.ApplicationLoginType = $.trim("NonAgent");
+    this.ApplicationAccountActivated = true;
+    this.ApplicationEnvironment = 'production';
+    this.ProductionEnvironment = 'production';
+    this.ApplicationMapKey = "AmtDdWZmvTaq-7HSEhJacWx4k_wh_2l6bYB4DWGsIMulUMQrIcJh1huFG3S8K5sA";
+    this.FeaturedListingPromotionType = $.trim("FD492243-F068-41EC-9759-2EB60A223B9C");
+    this.OpenHousePromotionType = $.trim("7B1C0450-4CC1-42C6-82B7-D410AF65DCA8");
+    this.HTTP_HOST = 'www.listingbook.co';
+    this.ApplicationMapArray = new Array();
+    this.eventManager = eventManager;
+    this.SetPageFlag = SetPageFlag;
+    this.GetPageFlag = GetPageFlag;
+    this.ShowAllPageFlags = ShowAllPageFlags;
+    this.RemovePageFlag = RemovePageFlag;
+    this.GetDefaultButton = GetDefaultButton;
+    this.RemoveDefaultButton = RemoveDefaultButton;
+    this.AddDefaultButton = AddDefaultButton;
+    this.orderCheckout = orderCheckout;
+    this.AppBldVer = AppBldVer;
+    this.AbortAjaxRequest = AbortAjaxRequest;
+    this.TrackAjaxRequest = TrackAjaxRequest;
+    this.AllowMultiServer = AllowMultiServer;
+    this.ValidEmailDomains = "aero,asia,biz,cat,com,coop,edu,gov,info,int,jobs,mil,mobi,museum,name,net,org,pro,tel,travel,ac,ad,ae,af,ag,ai,al,am,an,ao,aq,ar,as,at,au,aw,ax,az,ba,bb,bd,be,bf,bg,bh,bi,bj,bm,bn,bo,br,bs,bt,bv,bw,by,bz,ca,cc,cd,cf,cg,ch,ci,ck,cl,cm,cn,co,cr,cu,cv,cx,cy,cz,de,dj,dk,dm,do,dz,ec,ee,eg,eh,er,es,et,eu,fi,fj,fk,fm,fo,fr,ga,gb,gd,ge,gf,gg,gh,gi,gl,gm,gn,gp,gq,gr,gs,gt,gu,gw,gy,hk,hm,hn,hr,ht,hu,id,ie,il,im,in,io,iq,ir,is,it,je,jm,jo,jp,ke,kg,kh,ki,km,kn,kp,kr,kw,ky,kz,la,lb,lc,li,lk,lr,ls,lt,lu,lv,ly,ma,mc,md,me,mg,mh,mk,ml,mm,mn,mo,mp,mq,mr,ms,mt,mu,mv,mw,mx,my,mz,na,nc,ne,nf,ng,ni,nl,no,np,nr,nu,nz,om,pa,pe,pf,pg,ph,pk,pl,pm,pn,pr,ps,pt,pw,py,qa,re,ro,rs,ru,rw,sa,sb,sc,sd,se,sg,sh,si,sj,sk,sl,sm,sn,so,sr,st,su,sv,sy,sz,tc,td,tf,tg,th,tj,tk,tl,tm,tn,to,tp,tr,tt,tv,tw,tz,ua,ug,uk,us,uy,uz,va,vc,ve,vg,vi,vn,vu,wf,ws,ye,yt,za,zm,zw,aaa,abb,abbott,abogado,academy,accenture,accountant,accountants,aco,active,actor,ads,adult,aeg,afl,agency,aig,airforce,airtel,allfinanz,alsace,amica,amsterdam,android,apartments,app,aquarelle,archi,army,arpa,associates,attorney,auction,audio,auto,autos,axa,azure,band,bank,bar,barcelona,barclaycard,barclays,bargains,bauhaus,bayern,bbc,bbva,bcn,beer,bentley,berlin,best,bet,bharti,bible,bid,bike,bing,bingo,bio,black,blackfriday,bloomberg,blue,bms,bmw,bnl,bnpparibas,boats,bom,bond,boo,boots,boutique,bradesco,bridgestone,broker,brother,brussels,budapest,build,builders,business,buzz,bzh,cab,cafe,cal,camera,camp,cancerresearch,canon,capetown,capital,car,caravan,cards,care,career,careers,cars,cartier,casa,cash,casino,catering,cba,cbn,ceb,center,ceo,cern,cfa,cfd,chanel,channel,chat,cheap,chloe,christmas,chrome,church,cisco,citic,city,claims,cleaning,click,clinic,clothing,cloud,club,coach,codes,coffee,college,cologne,commbank,community,company,computer,condos,construction,consulting,contractors,cooking,cool,corsica,country,coupons,courses,credit,creditcard,cricket,crown,crs,cruises,csc,cuisinella,cw,cymru,cyou,dabur,dad,dance,date,dating,datsun,day,dclk,deals,degree,delivery,delta,democrat,dental,dentist,desi,design,dev,diamonds,diet,digital,direct,directory,discount,dnp,docs,dog,doha,domains,doosan,download,drive,durban,dvag,earth,eat,education,email,emerck,energy,engineer,engineering,enterprises,epson,equipment,erni,esq,estate,eurovision,eus,events,everbank,exchange,expert,exposed,express,fage,fail,faith,family,fan,fans,farm,fashion,feedback,film,final,finance,financial,firmdale,fish,fishing,fit,fitness,flights,florist,flowers,flsmidth,fly,foo,football,forex,forsale,forum,foundation,frl,frogans,fund,furniture,futbol,fyi,gal,gallery,game,garden,gbiz,gdn,gea,gent,genting,ggee,gift,gifts,gives,giving,glass,gle,global,globo,gmail,gmo,gmx,gold,goldpoint,golf,goo,goog,google,gop,graphics,gratis,green,gripe,group,guge,guide,guitars,guru,hamburg,hangout,haus,healthcare,help,here,hermes,hiphop,hitachi,hiv,hockey,holdings,holiday,homedepot,homes,honda,horse,host,hosting,hoteles,hotmail,house,how,hsbc,hyundai,ibm,icbc,ice,icu,ifm,iinet,immo,immobilien,industries,infiniti,ing,ink,institute,insure,international,investments,ipiranga,irish,ist,istanbul,itau,iwc,java,jcb,jetzt,jewelry,jlc,jll,joburg,jprs,juegos,kaufen,kddi,kia,kim,kitchen,kiwi,koeln,komatsu,krd,kred,kyoto,lacaixa,lancaster,land,lasalle,lat,latrobe,law,lawyer,lds,lease,leclerc,legal,lexus,lgbt,liaison,lidl,life,lighting,limited,limo,linde,link,live,lixil,loan,loans,lol,london,lotte,lotto,love,ltd,ltda,lupin,luxe,luxury,madrid,maif,maison,man,management,mango,market,marketing,markets,marriott,mba,media,meet,melbourne,meme,memorial,men,menu,miami,microsoft,mini,mma,moda,moe,mom,monash,money,montblanc,mormon,mortgage,moscow,motorcycles,mov,movie,movistar,mtn,mtpc,nadex,nagoya,navy,nec,netbank,network,neustar,new,news,nexus,ngo,nhk,nico,ninja,nissan,nokia,nra,nrw,ntt,nyc,obi,office,okinawa,omega,one,ong,onl,online,ooo,oracle,orange,organic,osaka,otsuka,ovh,page,panerai,paris,partners,parts,party,pet,pharmacy,philips,photo,photography,photos,physio,piaget,pics,pictet,pictures,pink,pizza,place,play,plumbing,plus,pohl,poker,porn,post,praxi,press,prod,productions,prof,properties,property,protection,pub,qpon,quebec,racing,realtor,realty,recipes,red,redstone,rehab,reise,reisen,reit,ren,rent,rentals,repair,report,republican,rest,restaurant,review,reviews,rich,ricoh,rio,rip,rocks,rodeo,rsvp,ruhr,run,ryukyu,saarland,sakura,sale,samsung,sandvik,sandvikcoromant,sanofi,sap,sarl,saxo,sca,scb,schmidt,scholarships,school,schule,schwarz,science,scor,scot,seat,security,seek,sener,services,seven,sew,sex,sexy,shiksha,shoes,show,shriram,singles,site,ski,sky,skype,sncf,soccer,social,software,sohu,solar,solutions,sony,soy,space,spiegel,spreadbetting,srl,stada,starhub,statoil,stc,stcgroup,stockholm,studio,study,style,sucks,supplies,supply,support,surf,surgery,suzuki,swatch,swiss,sx,sydney,systems,taipei,tatamotors,tatar,tattoo,tax,taxi,team,tech,technology,telefonica,temasek,tennis,thd,theater,theatre,tickets,tienda,tips,tires,tirol,today,tokyo,tools,top,toray,toshiba,tours,town,toyota,toys,trade,trading,training,trust,tui,ubs,university,uno,uol,vacations,vegas,ventures,versicherung,vet,viajes,video,villas,vin,vision,vista,vistaprint,viva,vlaanderen,vodka,vote,voting,voto,voyage,wales,walter,wang,watch,webcam,website,wed,wedding,weir,whoswho,wien,wiki,williamhill,win,windows,wine,wme,work,works,world,wtc,wtf,xbox,xerox,xin,xperia,xxx,xyz,yachts,yandex,yodobashi,yoga,yokohama,youtube,zip,zone,zuerich";
+    this.JavaScriptVersion = "310";
+    this.AgentLoginGUID = 'ABDBA230-8722-435D-B02A-49BEF98C8541';
+    this.MLSID = 'CRMLS';
+
+    function AllowMultiServer(){
+      return true;
+    }
+
+    function SetPageFlag(flagKey, flagValue){
+      pageFlags.AddObject(flagValue, flagKey);
+    }
+
+    function RemovePageFlag(flagKey){
+      pageFlags.RemoveObject(flagKey);
+    }
+
+    function GetPageFlag(flagKey){
+      return pageFlags.GetObject(flagKey);
+    }
+    function ShowAllPageFlags(){
+      tmpStr = '';
+      pageFlagsArray = pageFlags.GetCollection();
+      for(idx = 0; idx < pageFlagsArray.length; idx++){
+        tmpStr = tmpStr + pageFlagsArray[idx].ID + '=' + pageFlagsArray[idx].Data + '\r\n';
+      }
+      alert(tmpStr);
+    }
+
+    function GetDefaultButton()
+    {
+      var envStack = GetPageFlag("appDefaultButtons");
+      return envStack.GetStackTop();
+    }
+
+    function RemoveDefaultButton(isInModal)
+    {
+      var envStack = GetPageFlag("appDefaultButtons");
+      if (isInModal != null)
+      {
+        if (GetPageFlag("addedPopupButton") == true)
+        {
+          SetPageFlag("addedPopupButton", false);
+          envStack.Pop();
+        }
+      }
+      else
+        envStack.Pop();
+      SetPageFlag("appDefaultButtons", envStack);
+    }
+
+    function AddDefaultButton(isInModal)
+    {
+      var envStack = GetPageFlag("appDefaultButtons");
+      var selector = "body";
+      //scan for blue buttons on page
+      if (isInModal != null)
+        selector = "#popup_content";
+      var control = null;
+      var counter = 0;
+      var buttonClassArray = new Array();
+      var buttonClassNames = '.blueSubmitBtn,.blueSubmitBtnLarge,.graySubmitBtn';
+      buttonClassArray = buttonClassNames.split(",");
+      for (var i=0;i<buttonClassArray.length;i++)
+      {
+        $(selector  + " " + buttonClassArray[i]).each(function (i, el)
+        {
+          if ($(el).is(":visible") == true)
+          {
+            control = $(el);
+            counter++;
+          }
+        });
+      }
+
+      //Handles when multiple buttons exists on the page, and one needs to be defined as the submit
+      $(selector  + " .submitBtn").each(function (i, el)
+      {
+        if ($(el).is(":visible") == true)
+        {
+          control = $(el);
+          counter = 1;
+        }
+      });
+
+      //we need to setup the flag due to the OpenProgressDlg function - it calls a closePopup method which removes from stack
+      //if flag is true and this situation (flag setting) does not occur when opening a progress bar
+      //since we always add a control (even null) set flag to true
+      if (isInModal != null)
+      {
+        /*if (counter != 1)
+          SetPageFlag("addedPopupButton", false);
+        else*/
+        SetPageFlag("addedPopupButton", true);
+      }
+      //at every scan we need to add a "button" on top of stack
+      //null element handled by triggerDefaultButton function
+      if (counter != 1)
+        control = null;
+      envStack.Push(control);
+      SetPageFlag("appDefaultButtons", envStack);
+    }
+
+    function orderCheckout()
+    {
+      OpenProgressDlg();
+      eventGUID = environment.eventManager.GetObject("orderCheckout");
+      document.location.href = BuildURL(eventGUID,true);
+    }
+
+    function AppBldVer()
+    {
+      var ver = "10000012";
+      return $.trim(ver);
+    }
+
+    function TrackAjaxRequest(jqXHR,ajaxId)
+    {
+      activeAjaxRequest.AddObject(jqXHR,ajaxId);
+    }
+
+    function AbortAjaxRequest(ajaxId)
+    {
+      if (ajaxId)
+        activeAjaxRequest.RemoveObject(ajaxId);
+      else
+      {
+        //aborts all ajax calls
+        var activeAjaxRequestCollection = activeAjaxRequest.GetCollection();
+        for (var i=0;i<activeAjaxRequestCollection.length;i++)
+          activeAjaxRequest.GetObject(activeAjaxRequestCollection[i].ID).abort();
+
+        activeAjaxRequest.Clear();
+        environment.RemovePageFlag('abortAllAjaxRequest');
+      }
+    }
+  }
+  // global environment variable
+  var environment = new applicationEnvironment();
+  var actionManager = new PageActionManager();
+  environment.SetPageFlag("pageInitPopupCalls", new PriorityQueue());
+  environment.SetPageFlag("appDefaultButtons", new Stack());
+
+  //This may be removed once the ad system is developed
+  environment.SetPageFlag("defaultRightAdWidth",238);
+  environment.SetPageFlag("rightAdWidthx1",312);
+  environment.SetPageFlag("ModalWindowDialog",new LBModalWindow());
+  environment.SetPageFlag("appErrorPopupTitle", "An Error Has Occurred");
+  environment.SetPageFlag("webinarURL", "https://events-na2.adobeconnect.com/content/connect/c1/912235823/en/events/catalog.html#currentSearchTag=912235860");
+
+  if (environment.GetPageFlag("priceChangeXSL") == null)
+    environment.SetPageFlag("priceChangeXSL", '<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">   <xsl:output method="html" indent="yes"></xsl:output>   <xsl:template match="/capsule">     <table class="gray-zebra-tbl priceChangeToolTipTable">      <tbody>       <tr class="tbl-blue-header tbl-header">         <td colspan="2" align="center" class="header borderBottomNone">Price Change History</td>        </tr>       <xsl:for-each select="element">         <xsl:choose>            <xsl:when test="normalize-space(@label) != \'\'">             <tr>                <td class="left"><xsl:value-of select="@label"></xsl:value-of></td>               <td>                  <xsl:choose>                    <xsl:when test="normalize-space(@name) != \'DateChanged\'">                     <xsl:choose>                        <xsl:when test="@value=\'\'">                         &#8212;                       </xsl:when>                       <xsl:otherwise>                         <xsl:choose>                            <xsl:when test="string(number(@value)) != \'NaN\'">                             <xsl:choose>                                <xsl:when test="substring-after(@value,\'.\') > 0 ">                                  $<xsl:value-of select="format-number(@value, \'###,###.00\')"></xsl:value-of>                               </xsl:when>                               <xsl:otherwise>                                 $<xsl:value-of select="format-number(@value, \'###,###.##\')"></xsl:value-of>                               </xsl:otherwise>                              </xsl:choose>                           </xsl:when>                           <xsl:otherwise>                             <xsl:value-of select="@value"></xsl:value-of>                           </xsl:otherwise>                          </xsl:choose>                       </xsl:otherwise>                      </xsl:choose>                   </xsl:when>                   <xsl:otherwise>                     <xsl:value-of select="translate(@value,\'-\',\'/\')"></xsl:value-of>                    </xsl:otherwise>                  </xsl:choose>               </td>             </tr>           </xsl:when>         </xsl:choose>       </xsl:for-each>     </tbody>    </table>  </xsl:template>   </xsl:stylesheet>');
+</script>
+
+<!--
+Handles image preloads.
+Note: this has to be after constants.cfm because it is using the environment object
+-->
+<script src="/cdn/Scripts/common/preload/common.js" type="text/javascript"></script><script src="http://www.oculu.com/im4/im_initiate.php?user_id=1320624852"></script>
+  <meta property="og:title" content="Listingbook" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:description" content="" />
+
+<script src="//www.thisoldhouse.com/ad-wrapper/toh_header.js"></script>
+<script type="text/javascript">
+  tohAdWrapper.push("leaderboard", "leaderboard_1", {});
+  tohAdWrapper.push("leaderboard", "leaderboard_2", {});
+  tohAdWrapper.push("medium_rectangle", "medium_rectangle_1", {});
+  tohAdWrapper.push("medium_rectangle", "medium_rectangle_2", {});
+  tohAdWrapper.push("medium_rectangle", "medium_rectangle_3", {});
+  tohAdWrapper.push("skyscraper", "skyscraper_1", {});
+  tohAdWrapper.push("half_page", "half_page", {});
+</script>
+</head>
+
+<body class="" onunload="documentUnloadEvents()" onload="documentLoadEvents()" onbeforeunload="return documentBeforeUnloadEvent()">
+<script type="text/javascript">
+  // bind the execute doc scripts to the body
+  $('body').unload(function(event) {
+    ExecuteDocScripts(event);
+  });
+</script>
+  <div id="wrapper">
+      <div id="header">
+
+          <a id="logo" href="/index.cfm/event/displayInitialPage/"><img src="/cdn/images/logo.png" width="391" height="99" /></a>
+          <div class="fl-right marginRight10 marginTop10">
+
+      <script language="javascript">
+        //hides all ads on document until determined ads exists
+        $("div[class*='ad-']").addClass("displayHidden");
+        $("div[class*='adv_']").addClass("displayHidden");
+      </script>
+
+          <div class="">
+            <div id="leaderboard_1">
+   <script type="text/javascript">
+      tohAdWrapper.display("leaderboard_1");
+   </script>
+</div>
+          </div>
+
+          <script language="javascript">
+            $(document).ready(function(){
+              $("div[class*='ad-']").removeClass("displayHidden");
+              $("div[class*='adv_']").removeClass("displayHidden");
+              if ($.trim($("div[class*='adv_'] div").html()) == ""){
+                $("div[class*='adv_']").addClass("displayHidden");
+              } else {
+                if (true == false){
+                  $("div[class*='adv_']").css({marginLeft: ($("div[class*='adv_']").parent().width() - $("div[class*='adv_']").width()) / 2 + "px"});
+                }
+              }
+
+            });
+          </script>
+
+          </div>
+
+    </div>
+    <div id="page_container" class="width100Percent">
+            <div id="navArea">
+            <ul id="topnav">
+          <li class="currentfirst" id="currentMenu"><a onClick=javascript:buildLinkModal("B627D49A-60FD-4A61-9639-560388C22731","link",0) style="cursor:pointer;">Front Page</a></li><li class="" id=""><a onClick=javascript:buildLinkModal("2B16A444-E5E0-414E-9783-358708D6DC67","link",0) style="cursor:pointer;">My Home Finder</a></li><li class="" id=""><a onClick=javascript:buildLinkModal("A3B47602-CF5D-4822-92E7-3F7170657180","link",0) style="cursor:pointer;">Search</a></li><li class="" id=""><a onClick=javascript:buildLinkModal("C0F36BBA-1A06-4E0E-A218-EF66C8E40752","link",0) style="cursor:pointer;">Morning Report</a></li><li class="" id=""><a onClick=javascript:buildLinkModal("DA97B459-6229-4EA6-826B-13494FC6A0BB","link",0) style="cursor:pointer;">My Listings</a></li><li class="" id=""><a onClick=javascript:buildLinkModal("483C8D22-B463-4A95-9186-3F64D7899E1A","link",0) style="cursor:pointer;">My Account</a></li><li class="" id=""><a onClick=javascript:buildLinkModal("89C45C3E-A04D-4D8F-BFEA-FDACBCE6E68E","link",0) style="cursor:pointer;">Home Services</a></li><li class="last" id=""><a onClick=javascript:buildLinkModal("41DF38C4-A388-4ED0-A2E2-82E150FD2988","link",1) style="cursor:pointer;">Store</a></li><div id="menuHideShadow"></div>
+            </ul>
+            <div class="roundedCorner"></div>
+        <ul id="toplinks">
+            <li id="shoppingCartIcon" onClick="environment.orderCheckout()" class="displayHidden cursorPointer">
+              <div id="shoppingCartCount" class="arial">
+
+              </div>
+            </li>
+          <li class="arial"><a id="headerHelpLinkButton" onclick="OpenHelpPage('http://www.listingbookhelp.com/Mura/listingbookhelpclient/index.cfm/frontpage/features/')"><img src="/cdn/images/needhelp.png" width="73" height="20"></img></a></li> <li class="last arial"><a onClick="userLogout('/index.cfm/event/logout/')"><img src="/cdn/images/logout.png" width="73" height="20"></img></a></li>
+            </ul>
+        </div>
+
+
+
+      <div id="top_page_containerAgent"></div>
+            <div id="page_content">
+                <div id="content">
+
+            <div id="page_header">
+                        <div class="right-corner">
+                            <h1 class="fl-left">
+                Front Page
+              </h1>
+
+            </div>
+          </div>
+
+              <div id="contentArea">
+  <script type="text/javascript" language="javascript">
+    displayConvertedUserInterstitial = false;
+
+    $(document).ready(function()
+    {
+      // disable the BACKSPACE key except for the case when the target is an INPUT or TEXTAREA
+      $(document).keydown(function(event) {
+         if( (event.keyCode==8 || (event.keyCode==37 && event.altKey)) && event.target.nodeName != 'INPUT' && event.target.nodeName !='TEXTAREA' ){
+          event.preventDefault();
+         }
+      });
+      environment.SetPageFlag("ApplicationPageGUID",'B627D49A-60FD-4A61-9639-560388C22731');
+      environment.SetPageFlag("LoggedUserType",'NonAgent');
+
+      //This should only be here if the account has not been activated
+      if (!environment.ApplicationAccountActivated)
+        environment.GetPageFlag("pageInitPopupCalls").Enqueue({
+                  callback: showWelcomeDialog,
+                  callbackParam: {
+                      location: BuildURL(environment.eventManager.GetObject('welcomeDialog')),
+                      callback: showWelcomeDialog_callback}
+                          }, ACTIVATION_INIT_MODAL_PRIORITY);
+      if (displayConvertedUserInterstitial == true)
+      {
+        //check if need to display welcome video popup for converted agents
+        if (environment.ApplicationLoginType == environment.eventManager.GetObject("isAgent"))
+          environment.GetPageFlag("pageInitPopupCalls").Enqueue({
+                      callback: showVideoTourDialog,
+                      callbackParam: {
+                          location: environment.eventManager.GetObject('videoTour'),
+                          callback: showVideoTourDialog_callback}
+                              }, VIDEO_TOUR_INIT_MODAL_PRIORITY);
+        //check if need to display welcome interstitial popup for converted clients
+        if (environment.ApplicationLoginType == environment.eventManager.GetObject('isClient'))
+          environment.GetPageFlag("pageInitPopupCalls").Enqueue({
+                      callback: showClientWelcomeInterstitial,
+                      callbackParam: {
+                          location: environment.eventManager.GetObject('clientWelcomeInterstitial'),
+                          callback: showClientWelcomeInterstitial_callback}
+                              }, VIDEO_TOUR_INIT_MODAL_PRIORITY);
+      }
+
+    });
+  </script>
+  <script type="text/javascript">
+    frontPagePanels = new ObjectCollection();
+  </script>
+
+
+      <div class="xxlText arial boldText padding5 darkBlueText"><span id="greeting"></span><span>, John Webber</span></div>
+      <script language="javascript" type="text/javascript">
+        $(document).ready(function(){
+          var hour = (new Date()).getHours();
+          var greeting = "Good Morning";
+
+          if ((hour >= 12) && (hour <= 17)){
+            greeting = "Good Afternoon";
+          }
+          if ((hour >= 18) && (hour <= 23)){
+            greeting = "Good Evening";
+          }
+          $("#greeting").html(greeting);
+        });
+      </script>
+
+
+  <div id="leftContainer" class="sText fl-left paddingTop10">
+
+      <div id="leftColumn_Row_1" class="left605 marginLeft5 marginBottom10 FrontPageContent_Container"></div>
+
+      <div id="leftColumn_Row_2" class="left605 marginLeft5 marginBottom10 FrontPageContent_Container"></div>
+
+      <div id="leftColumn_Row_3" class="left605 marginLeft5 marginBottom10 FrontPageContent_Container"></div>
+
+      <div id="leftColumn_Row_4" class="left605 marginLeft5 marginBottom10 FrontPageContent_Container"></div>
+
+  </div>
+  <div id="rightContainer" class="sText fl-left paddingTop10">
+
+      <div id="rightColumn_Row_1" class="left605  marginRight5 marginBottom10 FrontPageContent_Container"></div>
+
+      <div id="rightColumn_Row_2" class="left605  marginRight5 marginBottom10 FrontPageContent_Container"></div>
+
+      <div id="rightColumn_Row_3" class="left605  marginRight5 marginBottom10 FrontPageContent_Container"></div>
+
+      <div id="rightColumn_Row_4" class="left605  marginRight5 marginBottom10 FrontPageContent_Container"></div>
+
+  </div>
+
+  <div class="fl-left padding5 whatNextMainSection">
+    <div class="darkBlueText boldText xlText marginBottom10">What would you like to do next?</div>
+    <div class="whatNextIcon viewHomeFinder" onClick="navigateNewPage('/index.cfm/event/2B16A444-E5E0-414E-9783-358708D6DC67/')">
+      <div class="whatNextIcon-text arial darkBlueText boldText">View<br/>Home Finder</div>
+    </div>
+
+    <div class="whatNextIcon viewFavorites" onClick="navigateConsumerDashboard('/index.cfm/event/2B16A444-E5E0-414E-9783-358708D6DC67/', 2)">
+      <div class="whatNextIcon-text arial darkBlueText boldText">View<br/>Favorites</div>
+    </div>
+
+
+
+    <div class="whatNextIcon quickSearch" onClick="navigateNewPage('/index.cfm/event/A3B47602-CF5D-4822-92E7-3F7170657180/')">
+      <div class="whatNextIcon-text arial darkBlueText boldText">Quick<br/>Search</div>
+    </div>
+
+    <div class="whatNextIcon viewMorningReports" onClick="navigateNewPage('/index.cfm/event/C0F36BBA-1A06-4E0E-A218-EF66C8E40752/')">
+      <div class="whatNextIcon-text arial darkBlueText boldText">View<br/>Morning Report</div>
+    </div>
+
+    <div class="whatNextIcon viewListingsClient" onClick="navigateNewPage('/index.cfm/event/DA97B459-6229-4EA6-826B-13494FC6A0BB/')">
+      <div class="whatNextIcon-text arial darkBlueText boldText">View<br/>Listing Activity</div>
+    </div>
+
+    <div class="whatNextIcon editAccountFrontPage" onClick="navigateNewPage('/index.cfm/event/D0BA4275-30A6-4B0F-B6A1-29D098EEFD16/')">
+      <div class="whatNextIcon-text arial darkBlueText boldText">Edit<br/>Account Settings</div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    environment.SetPageFlag("currentLoadedPanels", 0);
+  </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'PriceItRight';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.PriceItRight/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Price It Right';
+        tmpObj.panelName = 'PriceItRight';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'PriceItRight');
+
+          if (('D3C0F48F-57E9-4A0C-B33E-0FEBEC1D3B1F' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('PriceItRight');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('leftColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="PriceItRight" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('PRICEITRIGHT' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'TheseMightInterestYou';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.TheseMightInterestYou/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'These Might Interest You...';
+        tmpObj.panelName = 'TheseMightInterestYou';
+        tmpObj.panelActionLabel = 'Search Listingbook';
+        frontPagePanels.AddObject(tmpObj, 'TheseMightInterestYou');
+
+          if (('B11CA880-7A98-4E28-9309-57DDA1F0CD52' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('TheseMightInterestYou');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style="padding-left:10px; margin-top:10px; " id="TheseMightInterestYou" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('THESEMIGHTINTERESTYOU' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'Map';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.Map/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Map';
+        tmpObj.panelName = 'Map';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'Map');
+
+          if (('BA1CBB26-664B-43B0-A333-EC7AC945F2E9' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('Map');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style="padding-left:20px; margin-top:10px; " id="Map" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('MAP' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'MyAccountClient';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.MyAccountClient/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'My Account';
+        tmpObj.panelName = 'MyAccountClient';
+        tmpObj.panelActionLabel = 'Edit Settings';
+        frontPagePanels.AddObject(tmpObj, 'MyAccountClient');
+
+          if (('71037C4C-9883-499F-BF88-7B07C4E134F2' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('MyAccountClient');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="MyAccountClient" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('MYACCOUNTCLIENT' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'Advertisement';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.Advertisement/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Advertisement';
+        tmpObj.panelName = 'Advertisement';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'Advertisement');
+
+          if (('80E292BD-21D1-4EDB-B1EE-597F4BEC0E52' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('Advertisement');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:5px; " id="Advertisement" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('ADVERTISEMENT' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'LocalMarketConditions';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.LocalMarketConditions/';
+        if('Y' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Local Market Conditions';
+        tmpObj.panelName = 'LocalMarketConditions';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'LocalMarketConditions');
+
+          if (('6FCFA0D5-4632-4A6D-B88C-5C374B41AC18' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('LocalMarketConditions');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; position:relative;" id="LocalMarketConditions" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('LOCALMARKETCONDITIONS' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'ListingBee_PreferredProvider';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.ListingBee_PreferredProvider/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Preferred Providers';
+        tmpObj.panelName = 'ListingBee_PreferredProvider';
+        tmpObj.panelActionLabel = 'ListingBee.com';
+        frontPagePanels.AddObject(tmpObj, 'ListingBee_PreferredProvider');
+
+          if (('3CB6BBE3-D2C5-4FF3-982C-6DDBBE3E4628' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('ListingBee_PreferredProvider');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="ListingBee_PreferredProvider" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('LISTINGBEE_PREFERREDPROVIDER' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'SendMessage';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.SendMessage/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Send Message';
+        tmpObj.panelName = 'SendMessage';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'SendMessage');
+
+          if (('' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('SendMessage');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="SendMessage" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('SENDMESSAGE' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'FusionChart_Location';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.FusionChart_Location/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = '';
+        tmpObj.panelName = 'FusionChart_Location';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'FusionChart_Location');
+
+          if (('' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('FusionChart_Location');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="FusionChart_Location" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('FUSIONCHART_LOCATION' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('' != "") && ('' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'FusionChart_Address';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.FusionChart_Address/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = '';
+        tmpObj.panelName = 'FusionChart_Address';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'FusionChart_Address');
+
+          if (('' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('FusionChart_Address');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="FusionChart_Address" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('FUSIONCHART_ADDRESS' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('1' != "") && ('1' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'AgentInformation';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.AgentInformation/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Welcome Back to Listingbook!';
+        tmpObj.panelName = 'AgentInformation';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'AgentInformation');
+
+          if (('2A8F8520-4F67-459A-A45E-8786B6136CD4' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('AgentInformation');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('leftColumn_Row_1');
+      var dataHtml = $("#" + locationId).html() + '<div style="  " id="AgentInformation" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('AGENTINFORMATION' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('1' != "") && ('2' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'LocalMarketConditions-Client';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.LocalMarketConditions-Client/';
+        if('Y' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Local Market Conditions';
+        tmpObj.panelName = 'LocalMarketConditions-Client';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'LocalMarketConditions-Client');
+
+          if (('6AE4E3C1-EA6E-4235-A8BD-36C7AE10AB33' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('LocalMarketConditions-Client');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_1');
+      var dataHtml = $("#" + locationId).html() + '<div style="padding-left:10px;  position:relative;" id="LocalMarketConditions-Client" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('LOCALMARKETCONDITIONS-CLIENT' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('2' != "") && ('1' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'Inbox';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.Inbox/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Inbox';
+        tmpObj.panelName = 'Inbox';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'Inbox');
+
+          if (('768C5536-67FC-4A19-A36A-78D12CB75900' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('Inbox');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('leftColumn_Row_2');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="Inbox" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('INBOX' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('3' != "") && ('1' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'MorningReportQuickView';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.MorningReportQuickView/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Morning Report QuickView';
+        tmpObj.panelName = 'MorningReportQuickView';
+        tmpObj.panelActionLabel = 'View Full Morning Report';
+        frontPagePanels.AddObject(tmpObj, 'MorningReportQuickView');
+
+          if (('3E24F404-E027-408A-92AE-00555F388F26' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('MorningReportQuickView');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('leftColumn_Row_3');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="MorningReportQuickView" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('MORNINGREPORTQUICKVIEW' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('3' != "") && ('2' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'Calendar';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.Calendar/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Calendar';
+        tmpObj.panelName = 'Calendar';
+        tmpObj.panelActionLabel = 'View All Calendars';
+        frontPagePanels.AddObject(tmpObj, 'Calendar');
+
+          if (('7FD944DE-0A30-446D-AEBD-1639A58CCD3C' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('Calendar');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_3');
+      var dataHtml = $("#" + locationId).html() + '<div style="padding-left:10px; margin-top:10px; " id="Calendar" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('CALENDAR' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('3' != "") && ('3' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'HelpCenter';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.HelpCenter/';
+        if('N' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Help Center';
+        tmpObj.panelName = 'HelpCenter';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'HelpCenter');
+
+          if (('E851606A-6E4C-4666-BEA2-F114AC0EA3D0' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('HelpCenter');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('rightColumn_Row_3');
+      var dataHtml = $("#" + locationId).html() + '<div style="padding-left:20px; margin-top:10px; " id="HelpCenter" class="quarterFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('HELPCENTER' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+    <script type="text/javascript">
+      if (('4' != "") && ('2' != "")) {
+        tmpObj = new Object();
+        tmpObj.ID = 'YourPropertyAtAGlanceClient';
+        //TODO: replace this when the panel type column is ready
+        tmpObj.PanelType = 'GRID';
+        tmpObj.Location = '/index.cfm/event/frontPage.YourPropertyAtAGlanceClient/';
+        if('Y' == 'Y'){
+          tmpObj.PanelType = 'CHART';
+          tmpObj.Location = '/index.cfm/event/loadFusionChart/';
+        }
+        tmpObj.panelLabel = 'Your Properties At A Glance';
+        tmpObj.panelName = 'YourPropertyAtAGlanceClient';
+        tmpObj.panelActionLabel = '';
+        frontPagePanels.AddObject(tmpObj, 'YourPropertyAtAGlanceClient');
+
+          if (('32082FC7-D6E1-46F5-9E93-2FCAE273597F' == "32082FC7-D6E1-46F5-9E93-2FCAE273597F") && (0 == 0))
+            frontPagePanels.RemoveObject('YourPropertyAtAGlanceClient');
+
+      }
+    </script>
+
+    <script type="text/javascript" language="javascript">
+      var locationId = $.trim('leftColumn_Row_4');
+      var dataHtml = $("#" + locationId).html() + '<div style=" margin-top:10px; " id="YourPropertyAtAGlanceClient" class="halfFrontPageContainer fl-left"></div>';
+      $("#" + locationId).html(dataHtml);
+
+      if (('YOURPROPERTYATAGLANCECLIENT' == "INBOX") && ('FALSE' == 'TRUE')){
+        $("#" + locationId).append($("#mobileAccountData").html());
+        $(".mobileAccountData:last").remove();
+      }
+    </script>
+
+  <div class="displayHidden" id="mapSearchResultsData"></div>
+  <div class="adv_big marginTop5 marginBottom5">
+
+      <script language="javascript">
+        //hides all ads on document until determined ads exists
+        $("div[class*='ad-']").addClass("displayHidden");
+        $("div[class*='adv_']").addClass("displayHidden");
+      </script>
+
+          <div class="">
+            <div id="leaderboard_2">
+   <script type="text/javascript">
+      tohAdWrapper.display("leaderboard_2");
+   </script>
+</div>
+          </div>
+
+          <script language="javascript">
+            $(document).ready(function(){
+              $("div[class*='ad-']").removeClass("displayHidden");
+              $("div[class*='adv_']").removeClass("displayHidden");
+              if ($.trim($("div[class*='adv_'] div").html()) == ""){
+                $("div[class*='adv_']").addClass("displayHidden");
+              } else {
+                if (false == false){
+                  $("div[class*='adv_']").css({marginLeft: ($("div[class*='adv_']").parent().width() - $("div[class*='adv_']").width()) / 2 + "px"});
+                }
+              }
+
+            });
+          </script>
+
+  </div>
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+      environment.SetPageFlag('FrontPagePanels', frontPagePanels);
+      var thePanels = frontPagePanels.GetObjectCollection();
+      var frontPagePanelsLen = thePanels.length;
+      environment.SetPageFlag("numberOfPanelOnFrontPage", frontPagePanelsLen);
+
+      if (false == false)
+        for(crtPanel = 0; crtPanel < frontPagePanelsLen; crtPanel++)
+          loadFrontPagePanel(thePanels[crtPanel]);
+      else
+        preloadFrontPagePanels('/index.cfm/event/frontPage.PreloadFrontPage/');
+    });
+    environment.SetPageFlag('onFrontPage', true);
+  </script> </div><!-- /contentArea -->
+              <div id="footer">
+
+
+        <div id="breFooterWeb">Provided by Gerrie Izaguirre - BRE #01079123.</div>
+
+                <p class="left">
+              U.S. Reissued Patent No. RE 46,319 applies to this site and the features and <br />
+              services accessible via the site. Release 2.7.1.2
+            </p>
+            <p class="right">
+              <a onClick="OpenHelpPage('http://www.listingbookhelp.com/Mura/listingbookhelpclient/index.cfm/user-agreements/terms-of-service/')">Terms of Service</a>&nbsp;|&nbsp;<a onClick="OpenHelpPage('http://www.listingbookhelp.com/Mura/listingbookhelpclient/index.cfm/user-agreements/privacy-policy/')">Privacy Policy</a>&nbsp;|&nbsp;<a onClick="OpenHelpPage('http://www.listingbookhelp.com/Mura/listingbookhelpclient/index.cfm/user-agreements/pricing-refund-policy/')">Refund Policy</a><br />
+              1998-2017 Listingbook LLC. All Rights Reserved.
+            </p>
+          </div><!--/footer -->
+        </div><!--content -->
+      </div><!-- page_content -->
+      <div id="bot_page_container"></div>
+        </div><!-- page_container -->
+    </div><!-- wrapper -->
+
+    <script src="/CDN/bundles/common?v=u7CFCv_YVmh4r2XxMYpbTEgr-2hEybM-74P4gfHqe3g1"></script>
+
+
+    <script src="/CDN/bundles/frontPage?v=Z9Ros0CyjvjO7uXoZdcBfEdp-dpyXO2wC2-Z-ihIcKg1"></script>
+
+
+
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5WXF3C" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WXF3C');</script>
+<!-- End Google Tag Manager -->
+
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    adjustMenuShadow();
+    triggerDefaultButton();
+    window.MainWindow = window;
+  });
+
+  $(window).bind('resize', windowResizeHandler);
+
+</script>

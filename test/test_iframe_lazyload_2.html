@@ -1,0 +1,37 @@
+<script type="text/javascript">
+
+  console.log("window top");
+  console.log(window.parent.frameElement.id);
+  var ifr_id = window.parent.frameElement.id;
+  var adTopPos = window.parent.window.parent.document.getElementById(ifr_id).offsetTop;
+  console.log("adTopPos");
+  console.log(adTopPos);
+
+
+
+  console.log("check top 0");
+  var isInIframe = window.frameElement && window.frameElement.nodeName == "IFRAME";
+/*  console.log(isInIframe);
+  var isInIframe = window.parent.window.frameElement && window.parent.window.frameElement.nodeName == "IFRAME";
+  console.log(isInIframe);
+  var isInIframe = window.parent.window.parent.window.frameElement && window.parent.window.parent.window.frameElement.nodeName == "IFRAME";
+  console.log(isInIframe);*/
+
+
+
+
+
+</script>
+
+  <script src="toh_header.js"></script>
+
+  <script type="text/javascript">
+    tohAdWrapper.push("medium_rectangle", "medium_rectangle_if");
+  </script>
+
+  <h1>Iframe Ad Test (320X50)</h1>
+  <div id="medium_rectangle_if">
+    <script>
+      tohAdWrapper.display("medium_rectangle_if");
+    </script>
+  </div>

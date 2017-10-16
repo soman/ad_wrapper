@@ -1,0 +1,41 @@
+<script src="toh_header.js"></script>
+<script type="text/javascript">
+  //var ifr_id = window.parent.frameElement.id;
+  var ifr_id = window.frameElement.id;
+  var adTopPos = window.parent.document.getElementById(ifr_id).offsetTop;
+  console.log("adTopPos");
+  console.log(ifr_id);
+  console.log(adTopPos);
+
+
+/*  var ifr_id = window.frameElement;
+  var adTopPos = window.parent.document.offsetTop;
+  console.log("adTopPos");
+  console.log(ifr_id);
+  console.log(adTopPos);
+*/
+</script>
+
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    var iframe_slot = googletag.defineSlot('/68001964/300_250_iframe_ad', [300, 250], '300_250_iframe_ad_id').setTargeting("ad_type", "iframe_300_250").addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+
+    googletag.pubads().refresh([iframe_slot]);
+  });
+</script>
+
+
+<div id='300_250_iframe_ad_id' style='height:250px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('300_250_iframe_ad_id'); });
+</script>
+</div>
